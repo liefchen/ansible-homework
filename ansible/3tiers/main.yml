@@ -1,0 +1,20 @@
+- name: setup LB tier
+  hosts: frontends
+  become: yes
+  roles:
+    - base-config
+    - lb-tier
+  
+- name: setup app tier
+  hosts: apps
+  become: yes
+  roles:
+    - base-config
+    - app-tier
+
+- name: setup postgresql
+  hosts: appdbs
+  become: yes
+  roles:
+    - base-config
+    - geerlingguy.postgresql
