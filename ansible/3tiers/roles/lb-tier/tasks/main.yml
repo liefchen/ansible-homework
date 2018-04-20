@@ -3,7 +3,7 @@
     name: "{{ payload }}"
     state: latest
 
-- name: enable {payload} at boot time
+- name: enable {{ payload }} at boot time
   service:
     name: "{{ payload }}"
     enabled: yes

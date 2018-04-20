@@ -1,0 +1,4 @@
+- name: check tomcat serving via haproxy
+  uri:
+    url: http://frontend1.5368.example.opentlc.com/
+
