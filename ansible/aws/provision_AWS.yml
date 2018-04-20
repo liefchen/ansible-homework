@@ -23,7 +23,7 @@
 - name: Setup application1 
   hosts: apps
   roles:
-   - { role: ../3tiers/roles/apptier }
+   - { role: ../3tiers/roles/app-tier }
 
 - name: Setup postgresql
   hosts: appdbs
