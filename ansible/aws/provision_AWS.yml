@@ -16,31 +16,18 @@
 - name: Setup HAProxy
   hosts: frontends
   roles:
-   - { role: ../3tier/roles/haproxy }
+   - { role: ../3tiers/roles/lb-tier }
   tags:
     - setup-haproxy
-
-- name: Setup HTTP and Tomcat
-  hosts: apps
-  # gather_facts: false
-  roles:
-   - { role: ../3tiers/roles/http-tomcat }
-  tags:
-    - setup-tomcat
 
 - name: Setup application1 
   hosts: apps
   roles:
-   - { role: ../3tiers/roles/application1 }
-
-- name: Setup application2 
-  hosts: apps
-  roles:
-   - { role: ../3tiers/roles/application2 }
+   - { role: ../3tiers/roles/apptier }
 
 - name: Setup postgresql
   hosts: appdbs
   roles:
-   - { role: ../3tiers/roles/postgresql }
+   - { role: ../3tiers/roles/geerlingguy.postgresql }
   tags:
-- setup-postgresql
+    - setup-postgresql
