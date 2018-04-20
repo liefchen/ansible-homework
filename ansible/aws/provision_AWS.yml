@@ -1,10 +1,10 @@
 ---
-- name: Configure 3teir on AWS
-  hosts: jumpbox
-  roles:
-   - { role: ../3tiers/roles/osp.facts }
-  tags:
-    - osp.facts
+#- name: Configure 3teir on AWS
+#  hosts: jumpbox
+#  roles:
+#   - { role: ../3tiers/roles/osp.facts }
+#  tags:
+#    - osp.facts
 
 - name: Setup RedHat Repositories
   hosts: all
