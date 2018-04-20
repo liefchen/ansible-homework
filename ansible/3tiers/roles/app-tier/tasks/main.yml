@@ -1,14 +1,16 @@
-- name: install {{payload}}
+---
+
+- name: install {{ payload }}
   yum:
-    name: "{{payload}}"
+    name: "{{ payload }}"
     state: latest
 
-- name: enable {{payload}} at boot time
+- name: enable {{ payload }} at boot
   service:
     name: "{{ payload }}"
     enabled: yes
 
-- name: create tomcat default directory
+- name: create tomcat default web directory
   file:
     path: "{{ tomcat_web_root }}"
     state: directory
