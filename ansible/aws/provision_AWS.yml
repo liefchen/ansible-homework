@@ -1,0 +1,46 @@
+---
+- name: Configure 3teir on AWS
+  hosts: jumpbox
+  roles:
+   - { role: ../3tiers/roles/osp.facts }
+  tags:
+    - osp.facts
+
+- name: Setup RedHat Repositories
+  hosts: all
+  roles:
+   - { role: ../3tiers/roles/repo-config }
+  tags:
+    - setup-repos
+
+- name: Setup HAProxy
+  hosts: frontends
+  roles:
+   - { role: ../3tier3/roles/haproxy }
+  tags:
+    - setup-haproxy
+
+- name: Setup HTTP and Tomcat
+  hosts: apps
+  # gather_facts: false
+  roles:
+   - { role: ../3tiers/roles/http-tomcat }
+  tags:
+    - setup-tomcat
+
+- name: Setup application1 
+  hosts: apps
+  roles:
+   - { role: ../3tiers/roles/application1 }
+
+- name: Setup application2 
+  hosts: apps
+  roles:
+   - { role: ../3tiers/roles/application2 }
+
+- name: Setup postgresql
+  hosts: appdbs
+  roles:
+   - { role: ../3tiers/roles/postgresql }
+  tags:
+- setup-postgresql
