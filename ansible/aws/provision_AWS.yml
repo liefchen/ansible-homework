@@ -16,7 +16,7 @@
 - name: Setup HAProxy
   hosts: frontends
   roles:
-   - { role: ../3tier3/roles/haproxy }
+   - { role: ../3tier/roles/haproxy }
   tags:
     - setup-haproxy
 
